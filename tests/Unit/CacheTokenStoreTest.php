@@ -23,14 +23,15 @@ function tokenExpiringIn(string $modifier): AccessToken
 
 it('round-trips a token through the cache', function () {
     $store = tokenStore();
-    $store->put('token-key', tokenExpiringIn('+1 hour'));
+    $stored = tokenExpiringIn('+1 hour');
+    $store->put('token-key', $stored);
 
     $token = $store->get('token-key');
 
     expect($token)->toBeInstanceOf(AccessToken::class)
         ->and($token->token)->toBe('test-jwt-token')
         ->and($token->tokenId)->toBe('c0a80121-7ac0-4e1c-9a0f-0a1b2c3d4e5f')
-        ->and($token->expiresAt?->getTimestamp())->toBe(tokenExpiringIn('+1 hour')->expiresAt?->getTimestamp());
+        ->and($token->expiresAt?->getTimestamp())->toBe($stored->expiresAt?->getTimestamp());
 });
 
 it('returns null when no token is cached', function () {

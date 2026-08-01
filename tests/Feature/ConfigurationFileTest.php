@@ -2,6 +2,9 @@
 
 declare(strict_types=1);
 
+use CheckCommerce\Laravel\CheckCommerceServiceProvider;
+use Illuminate\Support\ServiceProvider;
+
 it('merges the package config', function () {
     expect(config('check-commerce.environment'))->toBe('production')
         ->and(config('check-commerce.api_version'))->toBe('1.0')
@@ -59,8 +62,13 @@ it('lets the application override the merged config', function () {
     expect(config('check-commerce.environment'))->toBe('sandbox');
 });
 
-it('publishes the config file under the package tags', function () {
-    $this->artisan('vendor:publish', ['--tag' => 'check-commerce-laravel-sdk-config'])->assertSuccessful();
+it('publishes the config file under the package tags', function (string $tag) {
+    // Asserted through the registered publish paths rather than by running
+    // vendor:publish: the Testbench skeleton config directory is shared by
+    // every parallel worker, and writing into it races their app boot.
+    $paths = ServiceProvider::pathsToPublish(CheckCommerceServiceProvider::class, $tag);
 
-    expect(config_path('check-commerce.php'))->toBeFile();
-})->after(fn () => @unlink(config_path('check-commerce.php')));
+    expect($paths)->toHaveCount(1)
+        ->and(array_key_first($paths))->toEndWith('/config/check-commerce.php')
+        ->and(reset($paths))->toBe(config_path('check-commerce.php'));
+})->with(['check-commerce-laravel-sdk', 'check-commerce-laravel-sdk-config']);
