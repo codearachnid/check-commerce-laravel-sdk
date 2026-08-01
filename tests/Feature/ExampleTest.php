@@ -2,38 +2,30 @@
 
 declare(strict_types=1);
 
-use VendorName\Skeleton\Skeleton;
+use CheckCommerceLaravelSDK\CheckCommerceLaravelSDK\CheckCommerceLaravelSDK;
 
 it('resolves the singleton', function () {
-    expect(app(Skeleton::class))->toBeInstanceOf(Skeleton::class);
+    expect(app(CheckCommerceLaravelSDK::class))->toBeInstanceOf(CheckCommerceLaravelSDK::class);
 });
 
 it('returns the same instance from the container', function () {
-    expect(app(Skeleton::class))->toBe(app(Skeleton::class));
+    expect(app(CheckCommerceLaravelSDK::class))->toBe(app(CheckCommerceLaravelSDK::class));
 });
 
-/* @chisel-config */
 it('merges the package config', function () {
-    expect(config('skeleton.placeholder'))->toBe('default');
+    expect(config('check-commerce-laravel-sdk.placeholder'))->toBe('default');
 });
-/* @end-chisel-config */
 
-/* @chisel-translations */
 it('loads the package translations', function () {
-    expect(trans('skeleton::messages.placeholder'))->toBe('Skeleton placeholder translation.');
+    expect(trans('check-commerce-laravel-sdk::messages.placeholder'))->toBe('CheckCommerceLaravelSDK placeholder translation.');
 });
-/* @end-chisel-translations */
 
-/* @chisel-views */
 it('loads the package views', function () {
-    expect(view()->exists('skeleton::placeholder'))->toBeTrue();
+    expect(view()->exists('check-commerce-laravel-sdk::placeholder'))->toBeTrue();
 });
-/* @end-chisel-views */
 
-/* @chisel-commands */
 it('registers the artisan command', function () {
-    $this->artisan('skeleton:placeholder')
-        ->expectsOutputToContain('Skeleton placeholder command executed.')
+    $this->artisan('check-commerce-laravel-sdk:placeholder')
+        ->expectsOutputToContain('CheckCommerceLaravelSDK placeholder command executed.')
         ->assertSuccessful();
 });
-/* @end-chisel-commands */

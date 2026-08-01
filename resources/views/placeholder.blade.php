@@ -1,1 +1,1 @@
-<div>Skeleton placeholder view.</div>
+<div>CheckCommerceLaravelSDK placeholder view.</div>
