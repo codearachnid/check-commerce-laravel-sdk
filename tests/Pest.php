@@ -2,6 +2,6 @@
 
 declare(strict_types=1);
 
-use CheckCommerceLaravelSDK\CheckCommerceLaravelSDK\Tests\TestCase;
+use CheckCommerce\Laravel\Tests\TestCase;
 
 uses(TestCase::class)->in(__DIR__);

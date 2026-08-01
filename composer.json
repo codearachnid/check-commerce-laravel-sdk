@@ -1,11 +1,16 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
     "name": "codearachnid/check-commerce-laravel-sdk",
-    "description": "A modern PHP SDK for the Check Commerce (OBP Link) API \u2014 ACH, RTP, paper check and IAT payments, stored consumers, recurring subscriptions, hosted payment pages, batch processing and merchant boarding.",
+    "description": "Laravel integration for the Check Commerce (OBP Link) API \u2014 a service provider, publishable config, facade, cache-backed token store and testing fake around the codearachnid/check-commerce-php-sdk client.",
     "keywords": [
         "laravel",
-        "codearachnid",
-        "check-commerce-laravel-sdk"
+        "check-commerce",
+        "payments",
+        "ach",
+        "rtp",
+        "echeck",
+        "sdk",
+        "codearachnid"
     ],
     "homepage": "https://github.com/codearachnid/check-commerce-laravel-sdk",
     "license": "MIT",
@@ -18,9 +23,13 @@
     ],
     "require": {
         "php": "^8.3",
+        "codearachnid/check-commerce-php-sdk": "^0.1",
+        "illuminate/cache": "^12.0||^13.0",
+        "illuminate/contracts": "^12.0||^13.0",
         "illuminate/support": "^12.0||^13.0"
     },
     "require-dev": {
+        "guzzlehttp/guzzle": "^7.8",
         "larastan/larastan": "^3.9",
         "laravel/pint": "^1.29",
         "laravel/pao": "^1.0",
@@ -30,14 +39,17 @@
         "pestphp/pest-plugin-type-coverage": "^4.0",
         "phpstan/extension-installer": "^1.4"
     },
+    "suggest": {
+        "guzzlehttp/guzzle": "The recommended PSR-18 HTTP client for the Check Commerce SDK, auto-discovered when installed"
+    },
     "autoload": {
         "psr-4": {
-            "CheckCommerceLaravelSDK\\CheckCommerceLaravelSDK\\": "src/"
+            "CheckCommerce\\Laravel\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "CheckCommerceLaravelSDK\\CheckCommerceLaravelSDK\\Tests\\": "tests/",
+            "CheckCommerce\\Laravel\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/",
             "Workbench\\Database\\Factories\\": "workbench/database/factories/",
             "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
@@ -87,10 +99,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "CheckCommerceLaravelSDK\\CheckCommerceLaravelSDK\\CheckCommerceLaravelSDKServiceProvider"
+                "CheckCommerce\\Laravel\\CheckCommerceServiceProvider"
             ],
             "aliases": {
-                "CheckCommerceLaravelSDK": "CheckCommerceLaravelSDK\\CheckCommerceLaravelSDK\\Facades\\CheckCommerceLaravelSDK"
+                "CheckCommerce": "CheckCommerce\\Laravel\\Facades\\CheckCommerce"
             }
         }
     },
@@ -98,7 +110,8 @@
         "sort-packages": true,
         "allow-plugins": {
             "pestphp/pest-plugin": true,
-            "phpstan/extension-installer": true
+            "phpstan/extension-installer": true,
+            "php-http/discovery": true
         }
     },
     "minimum-stability": "stable",
