@@ -17,6 +17,42 @@ it('merges the package config', function () {
         ->and(config('check-commerce.http_client.from_container'))->toBeTrue();
 });
 
+it('reads the CHECK_COMMERCE_* environment variables', function () {
+    putenv('CHECK_COMMERCE_API_KEY=env-api-key');
+    putenv('CHECK_COMMERCE_MERCHANT_NUMBER=123456');
+    putenv('CHECK_COMMERCE_ENVIRONMENT=sandbox');
+    putenv('CHECK_COMMERCE_BASE_URL=https://proxy.example.com/api');
+    putenv('CHECK_COMMERCE_TOKEN_CACHE_STORE=redis');
+
+    $config = require __DIR__.'/../../config/check-commerce.php';
+
+    expect($config['api_key'])->toBe('env-api-key')
+        ->and($config['merchant_number'])->toBe('123456')
+        ->and($config['environment'])->toBe('sandbox')
+        ->and($config['base_url'])->toBe('https://proxy.example.com/api')
+        ->and($config['token_cache']['store'])->toBe('redis');
+})->after(function () {
+    foreach ([
+        'CHECK_COMMERCE_API_KEY',
+        'CHECK_COMMERCE_MERCHANT_NUMBER',
+        'CHECK_COMMERCE_ENVIRONMENT',
+        'CHECK_COMMERCE_BASE_URL',
+        'CHECK_COMMERCE_TOKEN_CACHE_STORE',
+    ] as $variable) {
+        putenv($variable);
+    }
+});
+
+it('falls back to its defaults when nothing is in the environment', function () {
+    $config = require __DIR__.'/../../config/check-commerce.php';
+
+    expect($config['api_key'])->toBeNull()
+        ->and($config['merchant_number'])->toBeNull()
+        ->and($config['environment'])->toBe('production')
+        ->and($config['base_url'])->toBeNull()
+        ->and($config['token_cache']['store'])->toBeNull();
+});
+
 it('lets the application override the merged config', function () {
     config()->set('check-commerce.environment', 'sandbox');
 

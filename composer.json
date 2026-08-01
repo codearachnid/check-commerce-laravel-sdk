@@ -112,7 +112,10 @@
         "laravel": {
             "providers": [
                 "CheckCommerce\\Laravel\\CheckCommerceServiceProvider"
-            ]
+            ],
+            "aliases": {
+                "CheckCommerce": "CheckCommerce\\Laravel\\Facades\\CheckCommerce"
+            }
         }
     },
     "config": {
