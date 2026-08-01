@@ -32,12 +32,12 @@
     },
     "autoload": {
         "psr-4": {
-            "CheckCommerceLaravelSDK\\CheckCommerceLaravelSDK\\": "src/"
+            "CheckCommerce\\Laravel\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "CheckCommerceLaravelSDK\\CheckCommerceLaravelSDK\\Tests\\": "tests/",
+            "CheckCommerce\\Laravel\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/",
             "Workbench\\Database\\Factories\\": "workbench/database/factories/",
             "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
@@ -87,11 +87,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "CheckCommerceLaravelSDK\\CheckCommerceLaravelSDK\\CheckCommerceLaravelSDKServiceProvider"
-            ],
-            "aliases": {
-                "CheckCommerceLaravelSDK": "CheckCommerceLaravelSDK\\CheckCommerceLaravelSDK\\Facades\\CheckCommerceLaravelSDK"
-            }
+                "CheckCommerce\\Laravel\\CheckCommerceServiceProvider"
+            ]
         }
     },
     "config": {
