@@ -111,9 +111,11 @@ $result->transactionId;     // 123456789
 $result->status?->value;    // "Processed"
 
 // Credits, voids and refunds work the same way:
+$merchantNumber = config('check-commerce.merchant_number');
+
 CheckCommerce::transactions()->credit([...]);
-CheckCommerce::transactions()->void(['merchantNumber' => '999997', 'originalTransaction' => ['transactionId' => 123456789]]);
-CheckCommerce::transactions()->refund(['merchantNumber' => '999997', 'originalTransaction' => ['referenceNumber' => 'INV-1001']]);
+CheckCommerce::transactions()->void(['merchantNumber' => $merchantNumber, 'originalTransaction' => ['transactionId' => 123456789]]);
+CheckCommerce::transactions()->refund(['merchantNumber' => $merchantNumber, 'originalTransaction' => ['referenceNumber' => 'INV-1001']]);
 
 // Any rail, any transaction type:
 CheckCommerce::transactions()->create([...], PaymentType::Rtp);
@@ -196,9 +198,11 @@ return redirect()->away($link->url);
 ```php
 use CheckCommerce\Enums\FileDelimiter;
 
+$merchantNumber = config('check-commerce.merchant_number');
+
 $batch = CheckCommerce::batches()->submit([
-    ['merchantNumber' => '999997', 'transactionType' => 'Debit', 'amount' => 42.50, 'consumerInfo' => [...]],
-    ['merchantNumber' => '999997', 'transactionType' => 'Debit', 'amount' => 19.99, 'consumerInfo' => [...]],
+    ['merchantNumber' => $merchantNumber, 'transactionType' => 'Debit', 'amount' => 42.50, 'consumerInfo' => [...]],
+    ['merchantNumber' => $merchantNumber, 'transactionType' => 'Debit', 'amount' => 19.99, 'consumerInfo' => [...]],
 ]);
 
 // Or upload a file:
