@@ -21,18 +21,6 @@
             "role": "Developer"
         }
     ],
-    "repositories": [
-        {
-            "type": "path",
-            "url": "../check-commerce-phpsdk",
-            "options": {
-                "symlink": true,
-                "versions": {
-                    "codearachnid/check-commerce-php-sdk": "0.1.0"
-                }
-            }
-        }
-    ],
     "require": {
         "php": "^8.3",
         "codearachnid/check-commerce-php-sdk": "^0.1",
