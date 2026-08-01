@@ -3,7 +3,7 @@
 ## [Unreleased](https://github.com/codearachnid/check-commerce-laravel-sdk/compare/v0.1.0...1.x)
 
 
-## [v0.1.0](https://github.com/codearachnid/check-commerce-laravel-sdk/compare/...v0.1.0) - 202x-xx-xx
+## [v0.1.0](https://github.com/codearachnid/check-commerce-laravel-sdk/releases/tag/v0.1.0) - 2026-08-01
 
 Initial pre-release: the Laravel integration for [`codearachnid/check-commerce-php-sdk`](https://github.com/codearachnid/check-commerce-php-sdk).
 

@@ -10,8 +10,9 @@ return [
     |--------------------------------------------------------------------------
     |
     | The API key and merchant number (MID) issued for your Check Commerce
-    | account. Both are required; resolving the client without them throws a
-    | RuntimeException naming the missing configuration key.
+    | account. Both are required; resolving the client without them throws
+    | CheckCommerce\Exception\InvalidArgumentException naming the missing
+    | configuration key.
     |
     */
 
