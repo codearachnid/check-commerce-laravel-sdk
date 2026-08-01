@@ -1,7 +1,17 @@
 # Release Notes
 
-## [Unreleased](https://github.com/codearachnid/check-commerce-laravel-sdk/compare/v0.1.0...1.x)
+## [Unreleased](https://github.com/codearachnid/check-commerce-laravel-sdk/compare/v0.2.0...HEAD)
 
+## [v0.2.0](https://github.com/codearachnid/check-commerce-laravel-sdk/compare/v0.1.0...v0.2.0) - 2026-08-01
+
+<!-- Release notes generated using configuration in .github/release.yml at main -->
+### What's Changed
+
+#### Other Changes
+
+* Correct documented exception type, facade example path, and release date by @codearachnid in https://github.com/codearachnid/check-commerce-laravel-sdk/pull/2
+
+**Full Changelog**: https://github.com/codearachnid/check-commerce-laravel-sdk/compare/v0.1.0...v0.2.0
 
 ## [v0.1.0](https://github.com/codearachnid/check-commerce-laravel-sdk/releases/tag/v0.1.0) - 2026-08-01
 
