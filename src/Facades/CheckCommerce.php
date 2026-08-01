@@ -43,7 +43,7 @@ class CheckCommerce extends Facade
      *
      * $this->post('/checkout', [...]);
      *
-     * $checkCommerce->assertSent(fn ($request) => $request->getUri()->getPath() === '/api/transaction/ach');
+     * $checkCommerce->assertSent(fn ($request) => $request->getUri()->getPath() === '/api/transaction');
      * ```
      */
     public static function fake(?FakeHttpClient $http = null): FakeHttpClient
