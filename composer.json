@@ -23,7 +23,7 @@
     ],
     "require": {
         "php": "^8.3",
-        "codearachnid/check-commerce-php-sdk": "^0.1",
+        "codearachnid/check-commerce-php-sdk": "^0.2",
         "illuminate/cache": "^12.0||^13.0",
         "illuminate/contracts": "^12.0||^13.0",
         "illuminate/support": "^12.0||^13.0"
