@@ -1,6 +1,25 @@
 # Release Notes
 
-## [Unreleased](https://github.com/codearachnid/check-commerce-laravel-sdk/compare/v0.2.0...HEAD)
+## [Unreleased](https://github.com/codearachnid/check-commerce-laravel-sdk/compare/v0.3.0...HEAD)
+
+## [v0.3.0](https://github.com/codearachnid/check-commerce-laravel-sdk/compare/v0.2.0...v0.3.0) - 2026-08-23
+
+<!-- Release notes generated using configuration in .github/release.yml at main -->
+### What's Changed
+
+#### Dependencies
+
+* Update codearachnid/check-commerce-php-sdk requirement from ^0.1 to ^0.2 by @dependabot[bot] in https://github.com/codearachnid/check-commerce-laravel-sdk/pull/3
+
+#### Other Changes
+
+* Cut unused workbench scaffolding and hardcoded facade service list by @codearachnid in https://github.com/codearachnid/check-commerce-laravel-sdk/pull/5
+
+### New Contributors
+
+* @dependabot[bot] made their first contribution in https://github.com/codearachnid/check-commerce-laravel-sdk/pull/3
+
+**Full Changelog**: https://github.com/codearachnid/check-commerce-laravel-sdk/compare/v0.2.0...v0.3.0
 
 ## [v0.2.0](https://github.com/codearachnid/check-commerce-laravel-sdk/compare/v0.1.0...v0.2.0) - 2026-08-01
 
