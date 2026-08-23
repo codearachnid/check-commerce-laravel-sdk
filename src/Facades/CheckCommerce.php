@@ -80,15 +80,10 @@ class CheckCommerce extends Facade
     {
         $client = static::getFacadeRoot();
 
-        return match (true) {
-            ! $client instanceof CheckCommerceClient => parent::__callStatic($method, $args),
-            $method === 'transactions' => $client->transactions,
-            $method === 'consumers' => $client->consumers,
-            $method === 'subscriptions' => $client->subscriptions,
-            $method === 'batches' => $client->batches,
-            $method === 'hostedPages' => $client->hostedPages,
-            $method === 'boarding' => $client->boarding,
-            default => parent::__callStatic($method, $args),
-        };
+        if ($client instanceof CheckCommerceClient && property_exists($client, $method)) {
+            return $client->{$method};
+        }
+
+        return parent::__callStatic($method, $args);
     }
 }
