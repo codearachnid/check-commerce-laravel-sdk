@@ -80,7 +80,7 @@ class CheckCommerce extends Facade
     {
         $client = static::getFacadeRoot();
 
-        if ($client instanceof CheckCommerceClient && property_exists($client, $method)) {
+        if ($client instanceof CheckCommerceClient && array_key_exists($method, get_object_vars($client))) {
             return $client->{$method};
         }
 
