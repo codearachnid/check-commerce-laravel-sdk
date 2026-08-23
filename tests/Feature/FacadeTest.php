@@ -36,3 +36,7 @@ it('returns the same service instances as the client', function () {
 it('forwards everything else to the client', function () {
     expect(fn () => CheckCommerce::thisMethodDoesNotExist())->toThrow(Error::class);
 });
+
+it('does not proxy non-public client properties', function () {
+    expect(fn () => CheckCommerce::authenticator())->toThrow(Error::class, 'Call to undefined method');
+});
